@@ -5,7 +5,7 @@ pipeline {
 	maven 'maven3916'
     }
     environment {
-	SONAR_SCANNER_HOME = tool 'sonar7'
+	SONAR_SCANNER_HOME = tool 'sonar8'
 	IMAGE_NAME = "java-app"
         IMAGE_TAG = "${BUILD_NUMBER}"
 	GCP_PROJECT_ID = "focal-dock-440200-u5"
@@ -24,7 +24,7 @@ pipeline {
         stage('Checkout GitHub Codes'){
             steps {
                 echo 'Checking out GitHub Codes ...'
-		checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'jenkins-gcp', url: 'https://github.com/iQuantC/Jenkins_GCP_CloudRun.git']])
+		checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'jenkins-gcp', url: 'https://github.com/AllgraceTimothy/Jenkins_GCP_CloudRun/']])
             }
         }
         stage('Maven Build'){
